@@ -228,8 +228,7 @@ class AppComponent extends React.Component {
               rotate: 0
           }
       }
-      ImgFigures.push(<ImgFigure data = {value} ref={'imgFigure'+index} arrange={this.state.imgsArrangeArr[index]}/>);
-
+      ImgFigures.push(<ImgFigure data = {value} ref={'imgFigure'+index} arrange={this.state.imgsArrangeArr[index]} key={index}/>);
     }.bind(this));
 
     return (
