@@ -33,13 +33,48 @@ function get30DegRandom() {
     return ((Math.random() > 0.5 ? '': '-') + Math.ceil(Math.random() * 30));
 }
 
+/**控制按钮组件 */
+class ControllerUnit extends React.Component {
+    
+    handleClick(e) {
+
+        //如果点击的是当前正在选中态的按钮，则翻转你图片，否则将对应的图片居中
+        if (this.props.arrange.isCenter) {
+            this.props.inverse();
+        } else {
+            this.props.center();
+        }
+
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    render() {
+        var controllerUnitClassName = 'controller-unit';
+        
+        //如果对应的是居中的图片，显示控制按钮居中态
+        if (this.props.arrange.isCenter) {
+            controllerUnitClassName += ' is-center';
+
+            //如果对应的是翻转图片，显示控制按钮翻转态
+            if (this.props.arrange.inverse) {
+                controllerUnitClassName += ' is-inverse';
+            }
+        }
+
+        return (
+            <span className={controllerUnitClassName} onClick={this.handleClick.bind(this)}></span>
+        );
+    }
+}
+
 /**单个图片组件 */
 class ImgFigure extends React.Component {
 
-    handleClick(e){
-        if(this.props.arrange.isCenter){
+    handleClick(e) {
+        if(this.props.arrange.isCenter) {
             this.props.inverse();
-        } else{
+        } else {
             this.props.center();
         }
 
@@ -48,7 +83,7 @@ class ImgFigure extends React.Component {
     }
   
 
-    render(){
+    render() {
         var styleObj = {};
 
         //如果props属性中指定了这张图片的位置，则使用
@@ -106,7 +141,7 @@ class AppComponent extends React.Component {
 
     /**
      * 利用arrange函数，居中对应index的图片
-     * @param {*} index 需要悲剧中的图片对应的图片信息数组的index值
+     * @param {*} index 需要背景中的图片对应的图片信息数组的index值
      * @return {Function}
      */
     center(index) {
@@ -286,6 +321,8 @@ class AppComponent extends React.Component {
             }
             ImgFigures.push(<ImgFigure data={value} ref={'imgFigure'+index}
             arrange={this.state.imgsArrangeArr[index]} key={index} inverse={this.inverse(index)} center={this.center(index)}/>);
+
+            controllerUnits.push(<ControllerUnit arrange={this.state.imgsArrangeArr[index]} key={index} inverse={this.inverse(index)} center={this.center(index)}/>)
         }.bind(this));
 
         return (
