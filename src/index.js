@@ -1,7 +1,16 @@
 import 'core-js/fn/object/assign';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/Main';
+import { BrowserRouter as Router, Route ,browserHistory} from 'react-router-dom'
 
-// Render the main component into the dom
-ReactDOM.render(<App />, document.getElementById('app'));
+import APP from './components/Main';
+import Login from './components/Login';
+ReactDOM.render((
+    <Router history={browserHistory}>
+        <div>
+            <Route path="/Login" component={Login}/>
+            <Route path="/APP" component={APP}/>
+        </div>
+    </Router>
+),document.getElementById('app'));
+
