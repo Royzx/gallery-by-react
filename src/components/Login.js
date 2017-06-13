@@ -45,7 +45,7 @@ export default class Login extends React.Component {
                         <span className="help-block">{this.state.uNameHelp}</span>
                     </div>
                     <div className="form-group">
-                        <button type="button" onClick={this.handleClik.bind(this)}>登录</button>
+                        <button type="button" onClick={this.handleClik.bind(this)} className="login-btn">登录</button>
                     </div>
                 </form>
             </div>

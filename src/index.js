@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route ,browserHistory} from 'react-router-dom'
 
 import APP from './components/Main';
 import Login from './components/Login';
+
 ReactDOM.render((
     <Router history={browserHistory}>
         <div>
