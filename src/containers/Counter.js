@@ -4,9 +4,9 @@ import Counter from '../components/Counter'
 import * as CounterActions from '../actions/counter'
 //将state.counter绑定到props的counter
 function mapStateToProps(state) {
-  return {
-    counter1: state.counter
-  }
+    return {
+      counter: state.counter.count
+    }
 }
 //将action的所有方法绑定到props上
 function mapDispatchToProps(dispatch) {

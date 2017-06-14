@@ -1,13 +1,13 @@
-import React, { Component,PropTypes } from 'react'
-
+import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 
 // React component
 class Counter extends Component {
   render() {
-    const { increment, incrementIfOdd, incrementAsync, decrement, counter1 } = this.props
+    const { increment, incrementIfOdd, incrementAsync, decrement, counter } = this.props
     return (
       <p>
-        Clicked: {counter1} times
+        Clicked: {counter} times
         {' '}
         <button onClick={increment}>+</button>
         {' '}
@@ -29,7 +29,7 @@ Counter.propTypes = {
   incrementAsync: PropTypes.func.isRequired,
   decrement: PropTypes.func.isRequired,
   //counter必须为数字，且必须存在
-  counter1: PropTypes.number.isRequired
+  counter: PropTypes.number.isRequired
 };
 
 export default Counter
