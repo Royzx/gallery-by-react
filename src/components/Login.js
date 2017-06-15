@@ -1,45 +1,44 @@
 require('normalize.css/normalize.css');
 require('styles/App.scss');
 
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import React,{ Component }  from 'react';
-
 class Login extends Component {
 
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         userName:'',
-    //         uNameHelp:''
-    //     }
-    // }
+    constructor(props) {
+        super(props);
+        this.state = {
+            userName:'',
+            uNameHelp:''
+        }
+    }
 
-    // changeUserName(e) {
-    //     let uName = e.target.value;
-    //     this.setState({
-    //         userName:uName
-    //     })
-    // }
+    changeUserName(e) {
+        let uName = e.target.value;
+        this.setState({
+            userName:uName
+        })
+    }
 
-    // handleClik() {
-    //     if(this.state.userName === '' || this.state.userName === null) {
-    //         this.setState({
-    //             uNameHelp:'用户名不能为空哦'
-    //         })
-    //     } else {
-    //         console.log(this.state.userName);
-    //         if(this.state.userName == 'Royzx') {
-    //             this.props.history.push('/APP')
-    //         }
-    //     }
-    // }
+    login() {
+        if(this.state.userName === '' || this.state.userName === null) {
+            this.setState({
+                uNameHelp:'用户名不能为空哦'
+            })
+        } else {
+            console.log(this.state.userName);
+            if(this.state.userName == 'Royzx') {
+                this.props.history.push('/APP');
+            }
+        }
+    }
 
     render() {
-        const {
-            changeUserName,
-            login,
-            uNameHelp
-        } = this.props;
+        // const {
+        //     changeUserName,
+        //     uNameHelp,
+        //     login
+        // } = this.props;
 
         return (
             <div className="login-box">
@@ -47,11 +46,11 @@ class Login extends Component {
                 <form action="" className="form-horizontal">
                     <div className="form-group imput-text">
                         <label htmlFor="uname">账户</label>
-                        <input type="text" className="form-control" name="username" id="uname" ref="uname" placeholder="用户名" onChange={changeUserName}/>
-                        <span className="help-block">{uNameHelp}</span>
+                        <input type="text" className="form-control" name="username" id="uname" ref="uname" placeholder="用户名" onChange={this.changeUserName.bind(this)}/>
+                        <span className="help-block">{this.state.uNameHelp}</span>
                     </div>
                     <div className="form-group">
-                        <button type="button" onClick={login} className="login-btn">登录</button>
+                        <button type="button" onClick={this.login.bind(this)} className="login-btn">登录</button>
                     </div>
                 </form>
             </div>
@@ -59,10 +58,10 @@ class Login extends Component {
     }
 }
 
-Login.propTypes = {
-    changeUserName: PropTypes.func.isRequired,
-    login: PropTypes.func.isRequired,
-    uNameHelp: PropTypes.string.isRequired
-}
+// Login.propTypes = {
+//     changeUserName: PropTypes.func.isRequired,
+//     login: PropTypes.func.isRequired,
+//     uNameHelp: PropTypes.string.isRequired
+// }
 
 export default Login;

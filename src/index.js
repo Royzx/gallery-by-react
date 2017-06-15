@@ -19,7 +19,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route,browserHistory } from 'react-router-dom'
-import Login from './containers/Login'
+import Login from './components/Login'
 import APP from './components/Main'
 import configureStore from './stores/configureStore'
 const store = configureStore()
